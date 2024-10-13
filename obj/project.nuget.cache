@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "rOBWFHLWouY=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\lurix\\RiderProjects\\APM Counter\\APM Counter\\APM Counter.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\lurix\\.nuget\\packages\\litedb\\5.0.21\\litedb.5.0.21.nupkg.sha512",
+    "C:\\Users\\lurix\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512"
+  ],
+  "logs": []
+}

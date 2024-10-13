@@ -1,0 +1,38 @@
+﻿@page "/counter"
+@using APM_Counter.Data
+@using System.Timers
+@inject IActionStorage ActionStorage
+@implements IDisposable
+
+<PageTitle>Counter</PageTitle>
+
+<h1>Live</h1>
+
+<p> Total Actions: @_totalActions </p>
+<p> Current APM: @_currentApm </p>
+@* <p> @ApmHandler.actionList[0]</p> *@
+
+
+
+@code {
+	private Timer _timer = new Timer(TimeSpan.FromSeconds(1));
+	private int _currentApm;
+	private int _totalActions;
+
+	protected override void OnInitialized() {
+		_timer.Start();
+		_timer.Elapsed += (_,_) => InvokeAsync(Update);
+	}
+	
+	public void Dispose() {
+		_timer.Dispose();
+	}
+
+	private async Task Update() {
+		_currentApm = await ActionStorage.GetApm();
+		_totalActions = await ActionStorage.GetActionCount(DateTimeOffset.UnixEpoch, DateTimeOffset.Now);
+		StateHasChanged();
+	} 
+
+}
+
